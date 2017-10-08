@@ -10,7 +10,7 @@ class Node
 
   attr_reader :key
   attr_reader :value
-  attr_reader :left
-  attr_reader :right
+  attr_accessor :left
+  attr_accessor :right
 
 end
