@@ -65,6 +65,7 @@ class BinTree
     path2 = [@root]
     current_node = @root
 
+    #TODO merge
     #build path from root to node1
     while current_node.value != node1.value
       if node1.value < current_node.value
