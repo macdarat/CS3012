@@ -61,33 +61,8 @@ class BinTree
       return nil
     end
 
-    path1 = [@root]
-    path2 = [@root]
-    current_node = @root
-
-    #TODO merge
-    #build path from root to node1
-    while current_node.value != node1.value
-      if node1.value < current_node.value
-        current_node = current_node.left
-        path1.push(current_node)
-      else
-        current_node = current_node.right
-        path1.push(current_node)
-      end
-    end
-
-    current_node = @root
-    #build path from root to node2
-    while current_node.value != node2.value
-      if node2.value < current_node.value
-        current_node = current_node.left
-        path2.push(current_node)
-      else
-        current_node = current_node.right
-        path2.push(current_node)
-      end
-    end
+    path1 = path_to_node(node1)
+    path2 = path_to_node(node2)
 
     #iterate down path 1 until match is found in path2
     #this is the lca
@@ -102,6 +77,23 @@ class BinTree
     return nil
 
   end
+
+private def path_to_node(node)
+  path = [@root]
+  current_node = @root
+
+  #build path from root to node
+  while current_node.value != node.value
+    if node.value < current_node.value
+      current_node = current_node.left
+      path.push(current_node)
+    else
+      current_node = current_node.right
+      path.push(current_node)
+    end
+  end
+  return path
+end
 
   attr_reader :root
 
