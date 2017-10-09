@@ -56,6 +56,7 @@ class BinTree
   #Gets the lowest common ancestor node for the two nodes
   # passed as parameters
   def lowest_com_ancestor(node1, node2)
+    #if nodes aren't in tree, there is no lca
     if(!contains(@root, node1) || !contains(@root, node2))
       return nil
     end
@@ -87,12 +88,15 @@ class BinTree
       end
     end
 
+    #iterate down path 1 until match is found in path2
+    #this is the lca
     (path1.length - 1).downto(0) do |i|
       if path2.include?(path1[i])
         return path1[i]
       end
     end
 
+    #This is an error state
     puts "nil"
     return nil
 
