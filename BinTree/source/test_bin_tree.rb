@@ -1,13 +1,14 @@
 require_relative 'bin_tree.rb'
 require_relative 'node.rb'
-require 'test/unit'
+require 'minitest/spec'
+require 'minitest/autorun'
 
-class TestBinTree < Test::Unit::TestCase
+class TestBinTree < Minitest::Test
   #Ensure that the add method works correctly
   def test_add
     tree = BinTree.new
     #test empty
-    assert_equal(tree.root, nil)
+    assert tree.root == nil
 
     test_node =  Node.new("A", 6,)
     tree.add(test_node)
@@ -26,13 +27,13 @@ class TestBinTree < Test::Unit::TestCase
 
     test_node =  Node.new("D", -1,)
     tree.add(test_node)
-    #test 34 nodes added
+    #test 4 nodes added
     assert_equal(test_node, tree.root.left.left)
   end
 
   def test_contains
     tree = BinTree.new
-    assert_false(tree.contains(tree.root, Node.new("a", 8)))
+    assert !(tree.contains(tree.root, Node.new("a", 8)))
 
     tree.add(Node.new("a", 8))
     tree.add(Node.new("b", 1))
@@ -40,11 +41,11 @@ class TestBinTree < Test::Unit::TestCase
     tree.add(Node.new("d", 17))
     tree.add(Node.new("f", -3))
 
-    assert_true(tree.contains(tree.root, Node.new("a", 8)))
-    assert_true(tree.contains(tree.root, Node.new("d", 17)))
-    assert_true(tree.contains(tree.root, Node.new("f", -3)))
+    assert tree.contains(tree.root, Node.new("a", 8))
+    assert tree.contains(tree.root, Node.new("d", 17))
+    assert tree.contains(tree.root, Node.new("f", -3))
 
-    assert_false(tree.contains(tree.root, Node.new("a", 99)))
+    assert !(tree.contains(tree.root, Node.new("a", 99)))
 
   end
 
