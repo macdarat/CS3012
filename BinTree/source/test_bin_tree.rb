@@ -46,6 +46,7 @@ class TestBinTree < Minitest::Test
     assert tree.contains(tree.root, Node.new("f", -3))
 
     assert !(tree.contains(tree.root, Node.new("a", 99)))
+    assert !(tree.contains(tree.root, Node.new("b", 0)))
 
   end
 
@@ -68,6 +69,9 @@ class TestBinTree < Minitest::Test
 
     x = tree.lowest_com_ancestor(Node.new("d", 17), Node.new("d", 17))
     assert_equal("d", x.key)
+
+    x = tree.lowest_com_ancestor(Node.new("f", -3), Node.new("a", 8))
+    assert_equal("a", x.key)
   end
 
 end
