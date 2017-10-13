@@ -4,28 +4,49 @@ require 'minitest/spec'
 require 'minitest/autorun'
 
 class TestBinTree < Minitest::Test
+  #Ensure that object attributes are correct
+  def test_attrs
+    tree = BinTree.new
+    test_val = tree.root
+    assert test_val == nil
+
+    test_node = Node.new("M", 18)
+    test_val = test_node.key
+    assert_equal(test_val, "M")
+
+    test_val = test_node.value
+    assert_equal(test_val, 18)
+
+    test_left = Node.new("F", 1)
+    test_node.left = test_left
+    assert_equal(test_left, test_node.left)
+
+    test_right = Node.new("Q", 23)
+    test_node.right = test_right
+    assert_equal(test_right, test_node.right)
+  end
   #Ensure that the add method works correctly
   def test_add
     tree = BinTree.new
     #test empty
     assert tree.root == nil
 
-    test_node =  Node.new("A", 6,)
+    test_node =  Node.new("A", 6)
     tree.add(test_node)
     #test one node added
     assert_equal(tree.root, test_node)
 
-    test_node =  Node.new("B", 4,)
+    test_node =  Node.new("B", 4)
     tree.add(test_node)
     #test 2 nodes added
     assert_equal(test_node, tree.root.left)
 
-    test_node =  Node.new("C", 9,)
+    test_node =  Node.new("C", 9)
     tree.add(test_node)
     #test 3 nodes added
     assert_equal(test_node, tree.root.right)
 
-    test_node =  Node.new("D", -1,)
+    test_node =  Node.new("D", -1)
     tree.add(test_node)
     #test 4 nodes added
     assert_equal(test_node, tree.root.left.left)
