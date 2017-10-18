@@ -1,4 +1,4 @@
-#represents a binary tree with (key, value) nodes
+#represents a binary search tree with (value) nodes
 require './node.rb'
 
 class BinTree
