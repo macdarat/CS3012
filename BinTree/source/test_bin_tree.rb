@@ -112,6 +112,14 @@ class TestBinTree < Minitest::Test
     #test negative with root itself returns root
     x = tree.lowest_com_ancestor(Node.new(-3), Node.new(8))
     assert_equal(8, x.value)
+
+    #test node not in tree
+    x = tree.lowest_com_ancestor(Node.new(-7), Node.new(8))
+    assert x == nil
+
+    #test nil node
+    x = tree.lowest_com_ancestor(nil, Node.new(-3))
+    assert x == nil
   end
 
 end
