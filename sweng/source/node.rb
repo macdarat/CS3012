@@ -1,4 +1,4 @@
-#represents a node in a binary tree
+#represents a node in a graph
 
 class Node
   def initialize(value)

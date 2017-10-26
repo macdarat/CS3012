@@ -6,6 +6,17 @@ require 'minitest/autorun'
 
 class TestGraphAndTree < Minitest::Test
 
+  #test graph set up
+  def test_graph_init
+    test_g = Graph.new
+    assert !(test_g.contains("a"))
+    test_g.add_node("a")
+    assert (test_g.contains("a"))
+  end
+
+#==============================================================================#
+  #bin_tree tests
+
   #Ensure that object attributes are correct
   def test_attrs
     #test BinTree attr
