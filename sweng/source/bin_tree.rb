@@ -1,5 +1,4 @@
 #represents a binary search tree with (value) nodes
-require './node.rb'
 
 class BinTree
   def initialize
@@ -78,23 +77,36 @@ class BinTree
 
   end
 
-private def path_to_node(node)
-  path = [@root]
-  current_node = @root
+  private def path_to_node(node)
+    path = [@root]
+    current_node = @root
 
-  #build path from root to node
-  while current_node.value != node.value
-    if node.value < current_node.value
-      current_node = current_node.left
-      path.push(current_node)
-    else
-      current_node = current_node.right
-      path.push(current_node)
+    #build path from root to node
+    while current_node.value != node.value
+      if node.value < current_node.value
+        current_node = current_node.left
+        path.push(current_node)
+      else
+        current_node = current_node.right
+        path.push(current_node)
+      end
     end
+    return path
   end
-  return path
-end
 
   attr_reader :root
+
+end
+
+class TreeNode
+  def initialize(value)
+    @value = value
+    @left = nil
+    @right = nil
+  end
+
+  attr_reader :value
+  attr_accessor :left
+  attr_accessor :right
 
 end
