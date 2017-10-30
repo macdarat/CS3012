@@ -21,9 +21,19 @@ class TestGraphAndTree < Minitest::Test
     assert (test_g.contains("a"))
 
     assert test_g.has_edge("a","b")
-    assert !test_g.has_edge("b","a")
+    assert !(test_g.has_edge("b","a"))
   end
 
+  def test_cycle_check
+    test_g = Graph.new
+    test_g.add_edge("a", "b")
+    test_g.add_edge("a", "c")
+    test_g.add_edge("b", "c")
+
+    assert !(test_g.has_cycle)
+    test_g.add_edge("c", "a")
+    assert (test_g.has_cycle)
+  end
 #==============================================================================#
   #bin_tree tests
 
