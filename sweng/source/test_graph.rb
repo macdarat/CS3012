@@ -34,6 +34,29 @@ class TestGraphAndTree < Minitest::Test
     test_g.add_edge("c", "a")
     assert (test_g.has_cycle)
   end
+
+  def test_graph_lca
+    test_g = Graph.new
+    test_g.add_edge("a", "b")       #       a -. f
+    test_g.add_edge("a", "c")       #     /  \    .e
+    test_g.add_edge("b", "c")       #    .    . /
+    test_g.add_edge("c", "d")       #    b -. c -. d
+    test_g.add_edge("c", "e")       #
+    test_g.add_edge("a", "f")       # WHere a-.b means from a to b
+
+
+    lca = test_g.lowest_com_ancestor("e", "d")
+    #assert_equal("c", lca)
+
+    lca = test_g.lowest_com_ancestor("f", "e")
+    #assert_equal("a", lca)
+
+    lca = test_g.lowest_com_ancestor("c", "e")
+    #assert_equal("c", lca)
+
+    lca = test_g.lowest_com_ancestor("c", "e")
+    #assert_equal("c", lca)
+  end
 #==============================================================================#
   #bin_tree tests
 
