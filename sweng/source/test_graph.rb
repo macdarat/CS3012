@@ -38,24 +38,47 @@ class TestGraphAndTree < Minitest::Test
   def test_graph_lca
     test_g = Graph.new
     test_g.add_edge("a", "b")       #       a -. f
-    test_g.add_edge("a", "c")       #     /  \    .e
-    test_g.add_edge("b", "c")       #    .    . /
-    test_g.add_edge("c", "d")       #    b -. c -. d
-    test_g.add_edge("c", "e")       #
-    test_g.add_edge("a", "f")       # WHere a-.b means from a to b
+    test_g.add_edge("a", "c")       #     /  \    .e .---\
+    test_g.add_edge("b", "c")       #    .    . /         \
+    test_g.add_edge("c", "d")       #    b -. c -. d .    |
+    test_g.add_edge("c", "e")       #                 \  |
+    test_g.add_edge("a", "f")       #                   g
+    test_g.add_edge("g", "e")       # WHere a-.b means from a to b
+    test_g.add_edge("g", "d")
 
+    lca = test_g.lowest_com_ancestor("b", "f")
+    assert_equal(1, lca.length)
+    assert lca.include?("a")
 
-    lca = test_g.lowest_com_ancestor("e", "d")
-    #assert_equal("c", lca)
+    lca = test_g.lowest_com_ancestor("g", "g")
+    assert_equal(1, lca.length)
+    assert lca.include?("g")
+
+    lca = test_g.lowest_com_ancestor("e", "f")
+    assert_equal(1, lca.length)
+    assert lca.include?("a")
 
     lca = test_g.lowest_com_ancestor("f", "e")
-    #assert_equal("a", lca)
+    assert_equal(1, lca.length)
+    assert lca.include?("a")
+
+    lca = test_g.lowest_com_ancestor("e", "c")
+    assert_equal(1, lca.length)
+    assert lca.include?("c")
 
     lca = test_g.lowest_com_ancestor("c", "e")
-    #assert_equal("c", lca)
+    assert_equal(1, lca.length)
+    assert lca.include?("c")
 
-    lca = test_g.lowest_com_ancestor("c", "e")
-    #assert_equal("c", lca)
+    lca = test_g.lowest_com_ancestor("e", "d")
+    assert_equal(2, lca.length)
+    assert lca.include?("g")
+    assert lca.include?("c")
+
+    lca = test_g.lowest_com_ancestor("d", "e")
+    assert_equal(2, lca.length)
+    assert lca.include?("g")
+    assert lca.include?("c")
   end
 #==============================================================================#
   #bin_tree tests
