@@ -59,6 +59,11 @@ class Graph
   #gets all of the lowest common ancestor of two nodes in the graph
   #returns them in an array
   def lowest_com_ancestor(node1, node2)
+    #if node1 not in graph, return empty array as cant have lca
+    if @nodes[node1].nil? || @nodes[node2].nil?
+      return Array.new
+    end
+    
     ancestors_node1 = [node1]    #array of all node1's ancestors
     common_ancestors = []        #array of all common ancestors between node 1 and 2
 
@@ -106,7 +111,9 @@ class Graph
       if !(ancestors_node1.include?(ancestor))
         ancestors_node1 << ancestor
       end
-      make_anc_arr(ancestor, ancestors_node1)
+      if !ancestor.nil?
+        make_anc_arr(ancestor, ancestors_node1)
+      end
     end
   end
 

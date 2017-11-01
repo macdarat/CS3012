@@ -1,4 +1,5 @@
 #represents a binary search tree with (value) nodes
+require_relative './treenode.rb'
 
 class BinTree
   def initialize
@@ -95,18 +96,5 @@ class BinTree
   end
 
   attr_reader :root
-
-end
-
-class TreeNode
-  def initialize(value)
-    @value = value
-    @left = nil
-    @right = nil
-  end
-
-  attr_reader :value
-  attr_accessor :left
-  attr_accessor :right
 
 end

@@ -1,5 +1,5 @@
 require_relative 'graph.rb'
-require_relative 'node.rb'
+require_relative 'treenode.rb'
 require_relative 'bin_tree.rb'
 require 'minitest/spec'
 require 'minitest/autorun'
@@ -9,8 +9,10 @@ class TestGraphAndTree < Minitest::Test
   #test graph set up
   def test_graph_init
     test_g = Graph.new
+    puts "assert graph empty"
     assert !(test_g.contains("a"))
     test_g.add_node("a")
+    puts "assert graph adds nodes"
     assert (test_g.contains("a"))
   end
 
@@ -18,8 +20,10 @@ class TestGraphAndTree < Minitest::Test
   def test_graph_edges
     test_g = Graph.new
     test_g.add_edge("a", "b")
+    puts "assert adding edge to a graph adds its nodes too"
     assert (test_g.contains("a"))
 
+    puts "assert that edges are directed, ie not symmetric relation"
     assert test_g.has_edge("a","b")
     assert !(test_g.has_edge("b","a"))
   end
@@ -30,7 +34,9 @@ class TestGraphAndTree < Minitest::Test
     test_g.add_edge("a", "c")
     test_g.add_edge("b", "c")
 
+    puts "assert graph cycle detection returns false on non cyclic graph"
     assert !(test_g.has_cycle)
+    puts "assert graph detects cycles created when adding an edge"
     test_g.add_edge("c", "a")
     assert (test_g.has_cycle)
   end
@@ -46,14 +52,18 @@ class TestGraphAndTree < Minitest::Test
     test_g.add_edge("g", "e")       # WHere a-.b means from a to b
     test_g.add_edge("g", "d")
 
+    puts "-Testing LCA:"
+    puts "test lca of simple cases"
     lca = test_g.lowest_com_ancestor("b", "f")
     assert_equal(1, lca.length)
     assert lca.include?("a")
 
+    puts "test two nodes the same"
     lca = test_g.lowest_com_ancestor("g", "g")
     assert_equal(1, lca.length)
     assert lca.include?("g")
 
+    puts "test that order doesn't matter"
     lca = test_g.lowest_com_ancestor("e", "f")
     assert_equal(1, lca.length)
     assert lca.include?("a")
@@ -70,6 +80,7 @@ class TestGraphAndTree < Minitest::Test
     assert_equal(1, lca.length)
     assert lca.include?("c")
 
+    puts "testing lca on cases where there are multiple lcas to the nodes"
     lca = test_g.lowest_com_ancestor("e", "d")
     assert_equal(2, lca.length)
     assert lca.include?("g")
@@ -79,6 +90,20 @@ class TestGraphAndTree < Minitest::Test
     assert_equal(2, lca.length)
     assert lca.include?("g")
     assert lca.include?("c")
+
+    puts "testing nil edge case"
+    lca = test_g.lowest_com_ancestor("u", "e")
+    assert_equal(0, lca.length)
+
+    lca = test_g.lowest_com_ancestor("a", "x")
+    assert_equal(0, lca.length)
+
+    lca = test_g.lowest_com_ancestor(nil, nil)
+    assert_equal(0, lca.length)
+
+    puts "testing no lca"
+    lca = test_g.lowest_com_ancestor("a", "g")
+    assert_equal(0, lca.length)
   end
 #==============================================================================#
   #bin_tree tests
