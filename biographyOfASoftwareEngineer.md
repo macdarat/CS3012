@@ -1,6 +1,6 @@
 # Biography of Yukihiro "Matz" Matsumoto, the creator of Ruby
 
-Yukihiro Matsumoto, commonly known as *Matz*, is a Japanese software engineer. He was born on the 14th of April, 1965 in Osaka Prefecture. He is mostly known for creating the popular programming language Ruby. He is also responsible for creating Matz's Ruby Interpreter.  He has also authored several books, mostly focussing on the Ruby language.
+Yukihiro Matsumoto, commonly known as *"Matz"*, is a Japanese software engineer. He was born on the 14th of April, 1965 in Osaka Prefecture. He is mostly known for creating the popular programming language Ruby. He is also responsible for creating Matz's Ruby Interpreter.  He has also authored several books, mostly focussing on the Ruby language. He is a Mormon, and has a wife and four children. [source](https://www.mormon.org/matz)
 
 When Matz was young, he had a great interest in programming languages. He hoped to perhaps design one of his own someday. He studied computer science at Tsukuba University after he all ready begun programming in high school. Before university, his programming skills were entirely self taught.
 [Early life source.](http://www.japaninc.com/article.php?articleID=828)
@@ -12,3 +12,5 @@ Ruby itself was designed as a mixture of some of Matz's favourite languages, whi
 
 >"I was talking with my colleague about the possibility of an object-oriented scripting language. I knew Perl (Perl4, not Perl5), but I didn't like it really, because it had the smell of a toy language (it still has). The object-oriented language seemed very promising. I knew Python then. But I didn't like it, because I didn't think it was a true object-oriented language — OO features appeared to be add-on to the language. As a language maniac and OO fan for 15 years, I really wanted a genuine object-oriented, easy-to-use scripting language. I looked for but couldn't find one. So I decided to make it."
 [-Matz, talking on the Ruby mailing list in 1999](http://ruby-doc.org/docs/ruby-doc-bundle/FAQ/FAQ.html)
+
+Ruby's first release was in the year 1995 (ruby-0.95). Ruby 1.0 released was then released in December 1996. The Japanese Ruby community began to grow. Programmers and designers there who don't understand English are big fans. In 1999,  Matz co authors the first Ruby book with a colleague. In the early 2000s Ruby began to grow big outside of Japan. Later, the web development framework Ruby on Rails would lead to Matz's language becomming extremely popular. Even this website, Github, was [designed using Ruby on Rails](https://en.wikipedia.org/wiki/GitHub#GitHub). Matz continues to lead work on the Ruby language to this day. [Ruby history source.](http://blog.nicksieger.com/articles/2006/10/20/rubyconf-history-of-ruby/)
