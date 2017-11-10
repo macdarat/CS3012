@@ -37,3 +37,5 @@ Matz would later be appointed to the position of chief architect for Ruby at the
 >"Unlike the technical aspect of building software, community is about human relationships. Some developers don’t like this part, but sometimes the human relationships are important. In fact, they’re often the MOST important part of a project.
 
 [siliconangle interview with Matz.](https://siliconangle.com/blog/2011/08/31/qa-with-yukihiro-matz-matsumoto-the-creator-of-ruby/)
+
+Both Matz's design philosophy and the Ruby programming language itself would go on to influence more software engineers and programming language designers. Some of the languages influenced by Ruby include D and CoffeeScript. [source](http://coffeescript.org/#operators)
